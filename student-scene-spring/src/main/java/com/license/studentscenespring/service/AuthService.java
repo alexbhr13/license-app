@@ -12,16 +12,11 @@ import org.springframework.stereotype.Service;
 
 @Service
 @RequiredArgsConstructor
-public class AuthService {
+public class AuthService implements IAuthService {
 
     private final UserRepository userRepository;
     private final PasswordEncoder passwordEncoder;
-
     private final JWTService jwtService;
-
-    public User getUserByEmail(String email) {
-        return userRepository.findByEmail(email);
-    }
 
     public AuthResponseDTO checkUserCredentials(AuthRequestDTO request) {
         if (request.getEmail() == null || request.getEmail().isEmpty()) {
@@ -44,10 +39,10 @@ public class AuthService {
     }
 
     public String createToken(AuthResponseDTO response) {
-        User user = getUserByEmail(response.getEmail());
-//            if (!user.isConfirmed()) {
-//                return null;
-//            }
+        User user = userRepository.findByEmail(response.getEmail());
+            if (!user.is_confirmed()) {
+                return null;
+            }
         boolean isAdmin = response.getIsAdmin();
         return jwtService.generateToken(response.getEmail(), isAdmin);
     }

@@ -8,5 +8,4 @@ public interface IRegistrationService {
 
     void registerUser(RegistrationDTO request) throws Exception;
 
-    void confirmRegistration(String token);
 }

@@ -1,7 +1,9 @@
 package com.license.studentscenespring.service;
 
 import com.license.studentscenespring.dto.RegistrationDTO;
+import com.license.studentscenespring.model.Favorites;
 import com.license.studentscenespring.model.User;
+import com.license.studentscenespring.model.UserProfile;
 import com.license.studentscenespring.repository.UserRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
@@ -25,12 +27,9 @@ public class RegistrationService implements IRegistrationService{
                         .email(request.getEmail())
                         .password(request.getPassword())
                         .is_admin(request.is_admin())
+                        .userProfile(new UserProfile())
+                        .favorites(new Favorites())
                         .build()
         );
-    }
-
-    @Override
-    public void confirmRegistration(String token) {
-
     }
 }

@@ -6,6 +6,7 @@ import org.antlr.v4.runtime.misc.NotNull;
 
 @Getter
 @Setter
+@RequiredArgsConstructor
 public class RegistrationDTO {
 
     private String email;

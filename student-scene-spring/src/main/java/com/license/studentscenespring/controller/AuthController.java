@@ -3,11 +3,15 @@ package com.license.studentscenespring.controller;
 import com.license.studentscenespring.dto.AuthRequestDTO;
 import com.license.studentscenespring.dto.AuthResponseDTO;
 import com.license.studentscenespring.service.AuthService;
+import com.license.studentscenespring.service.IAuthService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
+
+import java.util.HashMap;
+import java.util.Map;
 
 @RestController
 @CrossOrigin
@@ -16,24 +20,25 @@ import org.springframework.web.bind.annotation.*;
 public class AuthController {
 
 
-    private final AuthService authService;
+    private final IAuthService authService;
 
     @PostMapping("/auth/login")
-    private ResponseEntity<String> loginUser(@RequestBody AuthRequestDTO request) {
-
-        AuthResponseDTO response = authService.checkUserCredentials(request);
-        if(response != null) {
-            String token = authService.createToken(response);
+    private ResponseEntity<Map<String,String>> loginUser(@RequestBody AuthRequestDTO request) {
+        HttpHeaders headers;
+        Map<String,String> response = new HashMap<>();
+        AuthResponseDTO dto = authService.checkUserCredentials(request);
+        if(dto != null) {
+            String token = authService.createToken(dto);
             if(token != null) {
-                HttpHeaders headers = authService.createHeader(token);
-                return ResponseEntity.status(HttpStatus.OK).headers(headers).body("Login successful");
+                headers = authService.createHeader(token);
+                response.put("message", String.valueOf(dto));
+                return ResponseEntity.status(HttpStatus.OK).headers(headers).body(response);
             } else {
-                return ResponseEntity.status(HttpStatus.UNAUTHORIZED).build();
+                response.put("message","token is null");
+                return ResponseEntity.status(HttpStatus.UNAUTHORIZED).body(response);
             }
         }
-        return ResponseEntity.status(HttpStatus.UNAUTHORIZED).build();
+        response.put("message","login error");
+        return ResponseEntity.status(HttpStatus.UNAUTHORIZED).body(response);
     }
-
-
-
 }

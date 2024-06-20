@@ -26,6 +26,14 @@ public class User implements UserDetails {
     boolean is_admin;
     boolean is_confirmed = false;
 
+    @OneToOne(cascade = CascadeType.ALL)
+    @JoinColumn(name = "user_id", nullable = false)
+    private UserProfile userProfile;
+
+    @OneToOne(cascade = CascadeType.ALL)
+    @JoinColumn(name = "favorites_id", nullable = false)
+    private Favorites favorites;
+
 
     public User(String email, String password, boolean is_admin, boolean is_confirmed) {
         this.email = email;
