@@ -15,14 +15,14 @@ import java.util.Map;
 
 @RestController
 @CrossOrigin
-@RequestMapping(path = "api/v1")
+@RequestMapping(path = "api/v1/auth")
 @RequiredArgsConstructor
 public class AuthController {
 
 
     private final IAuthService authService;
 
-    @PostMapping("/auth/login")
+    @PostMapping("/login")
     private ResponseEntity<Map<String,String>> loginUser(@RequestBody AuthRequestDTO request) {
         HttpHeaders headers;
         Map<String,String> response = new HashMap<>();
@@ -31,7 +31,7 @@ public class AuthController {
             String token = authService.createToken(dto);
             if(token != null) {
                 headers = authService.createHeader(token);
-                response.put("message", String.valueOf(dto));
+                response.put("message", "user logged in");
                 return ResponseEntity.status(HttpStatus.OK).headers(headers).body(response);
             } else {
                 response.put("message","token is null");

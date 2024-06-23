@@ -13,26 +13,22 @@ import java.util.List;
 @NoArgsConstructor
 @AllArgsConstructor
 @Entity
-@Table(name = "_favorites")
-public class Favorites {
+@Table(name = "_cart")
+public class Cart {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    @ManyToMany
-    @JoinTable(
-            name = "favorite_items",
-            joinColumns = @JoinColumn(name = "favorites_id"),
-            inverseJoinColumns = @JoinColumn(name = "item_id")
-    )
-    private List<Item> favoriteItems;
+    @OneToOne(mappedBy = "cart")
+    private User user;
 
     @ManyToMany
     @JoinTable(
-            name = "favorite_events",
-            joinColumns = @JoinColumn(name = "favorites_id"),
-            inverseJoinColumns = @JoinColumn(name = "event_id")
+            name = "cart_items",
+            joinColumns = @JoinColumn(name = "cart_id"),
+            inverseJoinColumns = @JoinColumn(name = "item_id")
     )
-    private List<Event> favoriteEvents;
+    private List<Item> items;
+
 }

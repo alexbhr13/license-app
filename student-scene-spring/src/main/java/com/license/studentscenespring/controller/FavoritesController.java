@@ -20,7 +20,7 @@ public class FavoritesController {
     private final IFavoritesService favoritesService;
 
     @GetMapping("/events")
-    public ResponseEntity<?> getFavoriteEvents(@RequestParam ("token") String token){
+    public ResponseEntity<?> getFavoriteEvents(@RequestHeader ("Authorization") String token){
         try{
             List<EventDTO> favoriteEvents = favoritesService.getFavoriteEvents(token);
             return new ResponseEntity<>(favoriteEvents, HttpStatus.OK);
@@ -30,7 +30,7 @@ public class FavoritesController {
     }
 
     @GetMapping("/items")
-    public ResponseEntity<?> getFavoriteItems(@RequestParam ("token") String token){
+    public ResponseEntity<?> getFavoriteItems(@RequestHeader ("Authorization") String token){
         try{
             List<ItemDTO> favoriteEvents = favoritesService.getFavoriteItems(token);
             return new ResponseEntity<>(favoriteEvents, HttpStatus.OK);
@@ -42,7 +42,7 @@ public class FavoritesController {
     @PostMapping("/addEvent")
     public ResponseEntity<?> addFavoriteEvent(
             @RequestParam ("id") Long id,
-            @RequestParam ("token") String token
+            @RequestHeader ("Authorization") String token
     ){
         try{
             favoritesService.addFavoriteEvent(id,token);
@@ -55,7 +55,7 @@ public class FavoritesController {
     @PostMapping("/addItem")
     public ResponseEntity<?> addFavoriteItem(
             @RequestParam ("id") Long id,
-            @RequestParam ("token") String token
+            @RequestHeader ("Authorization") String token
     ){
         try{
             favoritesService.addFavoriteItem(id,token);

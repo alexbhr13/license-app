@@ -19,7 +19,7 @@ public class UserProfileController {
     @PostMapping("/setProfile")
     public ResponseEntity<?> setUserProfile(
             @RequestBody UserProfileDTO userProfileDTO,
-            @RequestParam("token") String token) {
+            @RequestHeader ("Authorization") String token) {
         try {
             userProfileService.setUserProfile(userProfileDTO, token);
         } catch (Exception e) {
@@ -29,7 +29,7 @@ public class UserProfileController {
     }
 
     @GetMapping("/getProfile")
-    public ResponseEntity<?> getUserProfile(@RequestParam("token") String token) {
+    public ResponseEntity<?> getUserProfile(@RequestHeader ("Authorization") String token) {
         try {
             UserProfileDTO userProfileDTO = userProfileService.getUserProfile(token);
             return ResponseEntity.status(HttpStatus.OK).body(userProfileDTO);

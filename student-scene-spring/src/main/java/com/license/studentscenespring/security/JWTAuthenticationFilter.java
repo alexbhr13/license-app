@@ -1,6 +1,5 @@
 package com.license.studentscenespring.security;
 
-import com.license.studentscenespring.exception.JWTAuthenticationException;
 import jakarta.servlet.FilterChain;
 import jakarta.servlet.ServletException;
 import jakarta.servlet.http.HttpServletRequest;
@@ -34,7 +33,7 @@ public class JWTAuthenticationFilter extends OncePerRequestFilter {
             } else {
                 filterChain.doFilter(request, response);
             }
-        } catch (final JWTAuthenticationException ex) {
+        } catch (final Exception ex) {
             response.sendError(HttpServletResponse.SC_UNAUTHORIZED, "Error parsing JWT Token");
         }
 

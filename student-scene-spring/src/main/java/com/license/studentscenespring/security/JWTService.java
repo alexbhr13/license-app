@@ -1,11 +1,7 @@
 package com.license.studentscenespring.security;
 
-import com.license.studentscenespring.exception.JWTAuthenticationException;
-import com.nimbusds.jose.util.StandardCharset;
 import io.jsonwebtoken.Claims;
 import io.jsonwebtoken.Jwts;
-import io.jsonwebtoken.Locator;
-import io.jsonwebtoken.SignatureAlgorithm;
 import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
@@ -19,7 +15,6 @@ import org.springframework.stereotype.Service;
 import javax.crypto.SecretKey;
 import javax.crypto.spec.SecretKeySpec;
 import java.nio.charset.StandardCharsets;
-import java.security.Key;
 import java.time.Duration;
 import java.util.ArrayList;
 import java.util.Date;
@@ -37,7 +32,7 @@ public class JWTService {
     private String secret;
 
 
-    public Authentication getAuthentication(String token) throws JWTAuthenticationException {
+    public Authentication getAuthentication(String token) throws Exception {
         String userEmail = extractEmail(token);
         boolean isAdmin = extractIsAdmin(token);
 
@@ -52,9 +47,8 @@ public class JWTService {
             }
             return new UsernamePasswordAuthenticationToken(userDetails,null,authorityList);
         } else {
-            throw new JWTAuthenticationException("Invalid token");
+            throw new Exception("Invalid token");
         }
-
     }
 
     public String extractEmail(String token) {

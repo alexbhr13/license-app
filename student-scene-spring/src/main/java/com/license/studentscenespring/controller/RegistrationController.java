@@ -15,12 +15,12 @@ import java.util.Map;
 
 @RestController
 @CrossOrigin
-@RequestMapping(path = "api/v1")
+@RequestMapping(path = "api/v1/auth")
 @RequiredArgsConstructor
 public class RegistrationController {
     private final IRegistrationService registrationService;
     private final IRegistrationConfirmationService registrationConfirmationService;
-    @PostMapping("/auth/registration")
+    @PostMapping("/registration")
     public ResponseEntity<?> register(@RequestBody RegistrationDTO request) {
         Map<String, String> response = new HashMap<>();
         HttpHeaders headers = new HttpHeaders();
@@ -35,7 +35,7 @@ public class RegistrationController {
         return ResponseEntity.status(HttpStatus.OK).headers(headers).body(response);
     }
 
-    @GetMapping("/auth/registration/confirm")
+    @GetMapping("/registration/confirm")
     public ResponseEntity<String> confirmAccount(@RequestParam("token") String token) {
         try{
             registrationConfirmationService.confirmAccount(token);

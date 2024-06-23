@@ -1,6 +1,7 @@
 package com.license.studentscenespring.service;
 
 import com.license.studentscenespring.dto.RegistrationDTO;
+import com.license.studentscenespring.model.Cart;
 import com.license.studentscenespring.model.Favorites;
 import com.license.studentscenespring.model.User;
 import com.license.studentscenespring.model.UserProfile;
@@ -29,6 +30,7 @@ public class RegistrationService implements IRegistrationService{
                         .is_admin(request.is_admin())
                         .userProfile(new UserProfile())
                         .favorites(new Favorites())
+                        .cart(new Cart())
                         .build()
         );
     }

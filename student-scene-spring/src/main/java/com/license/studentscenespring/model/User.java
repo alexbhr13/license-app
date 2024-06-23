@@ -34,6 +34,9 @@ public class User implements UserDetails {
     @JoinColumn(name = "favorites_id", nullable = false)
     private Favorites favorites;
 
+    @OneToOne(cascade = CascadeType.ALL)
+    @JoinColumn(name = "cart_id", nullable = false)
+    private Cart cart;
 
     public User(String email, String password, boolean is_admin, boolean is_confirmed) {
         this.email = email;

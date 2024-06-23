@@ -13,7 +13,7 @@ import java.util.List;
 
 @RestController
 @CrossOrigin
-@RequestMapping(path = "/api/tags")
+@RequestMapping(path = "/api/v1/tags")
 @RequiredArgsConstructor
 public class TagController {
 
@@ -28,8 +28,8 @@ public class TagController {
 
     @GetMapping("/get")
     public ResponseEntity<List<TagRequestDTO>> getSpecificTags(@RequestParam ("tagType") String tagType) {
-        List<TagRequestDTO> tagDtos = tagService.getAllSpecificTags(tagType);
-        return new ResponseEntity<>(tagDtos, HttpStatus.OK);
+        List<TagRequestDTO> tagDTOs = tagService.getAllSpecificTags(tagType);
+        return new ResponseEntity<>(tagDTOs, HttpStatus.OK);
     }
 
 }

@@ -11,7 +11,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 @RestController
-@RequestMapping(path = "api/v1")
+@RequestMapping(path = "api/v1/pwdres")
 @RequiredArgsConstructor
 @CrossOrigin
 public class PasswordResetController {
@@ -19,7 +19,7 @@ public class PasswordResetController {
     private final IPasswordResetService passwordResetService;
     private final ITokenService tokenService;
 
-    @PostMapping("/pwdres/request")
+    @PostMapping("/request")
     public ResponseEntity<String> sendPasswordResetRequest(@RequestHeader String email) {
         try{
             passwordResetService.sendPasswordResetRequest(email);
@@ -29,17 +29,7 @@ public class PasswordResetController {
         return ResponseEntity.status(HttpStatus.CREATED).body("Email has been sent successfully");
     }
 
-    @PostMapping("/pwdres/receive")
-    public ResponseEntity<String> receivePasswordResetRequest(@RequestParam("token") String token) {
-        try{
-            tokenService.validateToken(token);
-        }catch (Exception e) {
-            return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(e.getMessage());
-        }
-        return ResponseEntity.status(HttpStatus.OK).body("Password reset token validated");
-    }
-
-    @PostMapping("/pwdres/reset")
+    @PostMapping("/reset")
     public ResponseEntity<String> resetPassword(@RequestHeader String token, @RequestBody PasswordRequestDTO request) {
         try {
             passwordResetService.resetPassword(token, request);
