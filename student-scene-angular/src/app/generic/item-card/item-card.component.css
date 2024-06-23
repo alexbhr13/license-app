@@ -1,0 +1,18 @@
+.item {
+  /*width: calc(100vw - 32px);*/
+  align-content: center;
+  padding: 20px;
+  margin: 20px;
+  display: flex;
+  flex-direction: column;
+  border: black 2px;
+  border-radius: 5px;
+}
+
+.image{
+
+}
+
+.button{
+  color: blue;
+}

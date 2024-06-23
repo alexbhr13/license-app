@@ -1,0 +1,18 @@
+<div class="background">
+  <div class="top-bar">
+    <div class="app-name" routerLink="/search" >
+      <img src="assets/icons/studentSceneIcon.png"/>
+    </div>
+    <div class="search-icon">
+      <img src="assets/icons/searchIcon.png"/>
+    </div>
+  </div>
+  <div class="event-list-title">Events</div>
+  <div class="event-list">
+
+    <div class="" *ngFor="let event of events">
+      <app-event-card class="" [event]="event"></app-event-card>
+    </div>
+  </div>
+  <app-footer class="footer" ></app-footer>
+</div>

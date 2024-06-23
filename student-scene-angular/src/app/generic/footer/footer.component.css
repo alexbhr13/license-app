@@ -1,0 +1,30 @@
+.footer-nav {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  position: fixed;
+  bottom: 0;
+  width: 100%;
+  background-color: #CECED0;
+  height: 200px;
+  border-top-color: #000;
+  border-top-style: solid;
+  mso-border-shadow: yes;
+  border-width: 2px;
+  border-radius: 5px;
+}
+
+.footer-icon{
+  display: block;
+  margin: auto;
+  width: 40%;
+  height: 40%;
+}
+
+.footer-item {
+  flex-grow: 1;
+  text-align: center;
+  display: flex;
+}
+
+

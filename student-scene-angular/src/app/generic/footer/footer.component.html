@@ -1,0 +1,22 @@
+<div class="footer-nav">
+  <div class="footer-item" routerLink="/home" routerLinkActive="active" [ngClass]="{ 'active': isActive('/home') }">
+    <img class="footer-icon" *ngIf="!isActive('/home')" src="assets/icons/eventsUnfocused.png"  alt="Home Icon">
+    <img class="footer-icon" *ngIf="isActive('/home')" src="assets/icons/eventsFocused.png" alt="Active Home Icon">
+  </div>
+  <div class="footer-item" routerLink="/marketplace" routerLinkActive="active" [ngClass]="{ 'active': isActive('/marketplace') }">
+    <img class="footer-icon" *ngIf="!isActive('/marketplace')" src="assets/icons/marketUnfocused.png"  alt="Marketplace Icon">
+    <img class="footer-icon" *ngIf="isActive('/marketplace')" src="assets/icons/marketFocused.png" alt="Active Marketplace Icon">
+  </div>
+  <div class="footer-item" routerLink="/favorite-events" routerLinkActive="active" [ngClass]="{ 'active': isActive('/favorite-events') }">
+    <img class="footer-icon" *ngIf="!isActive('/favorite-events')" src="assets/icons/favoritesUnfocused.png" alt="Favorite Events Icon">
+    <img class="footer-icon" *ngIf="isActive('/favorite-events')" src="assets/icons/favoritesFocused.png" alt="Active Favorite Events Icon">
+  </div>
+  <div class="footer-item" routerLink="/cart" routerLinkActive="active" [ngClass]="{ 'active': isActive('/cart') }">
+    <img class="footer-icon" *ngIf="!isActive('/cart')" src="assets/icons/cartUnfocused.png" alt="Cart Icon">
+    <img class="footer-icon" *ngIf="isActive('/cart')" src="assets/icons/cartFocused.png" alt="Active Cart Icon">
+  </div>
+  <div class="footer-item" routerLink="/profile" routerLinkActive="active" [ngClass]="{ 'active': isActive('/profile') }">
+    <img class="footer-icon" *ngIf="!isActive('/profile')" src="assets/icons/profile.png" alt="Profile Icon">
+    <img class="footer-icon" *ngIf="isActive('/profile')" src="assets/icons/profileFocused.png" alt="Active Profile Icon">
+  </div>
+</div>

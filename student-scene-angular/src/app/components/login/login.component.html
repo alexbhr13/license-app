@@ -1,0 +1,47 @@
+
+<form [formGroup]="loginForm" (ngSubmit)="onSubmit()">
+
+  <mat-form-field appearance="outline">
+    <mat-label>Email</mat-label>
+    <input
+      matInput
+      placeholder="Placeholder"
+      id="email"
+      type="email"
+      class="form-control"
+      formControlName="email"
+      required>
+  </mat-form-field>
+  <p>Email field status: {{ loginForm.get('email')?.status }}</p>
+
+  <mat-form-field appearance="outline">
+    <mat-label>Password</mat-label>
+    <input
+      matInput
+      placeholder="Placeholder"
+      id="password"
+      [type]="hide ? 'password' : 'text'"
+      class="form-control"
+      formControlName="password"
+      required
+    />
+    <button mat-icon-button matSuffix (click)="clickEvent($event)" [attr.aria-label]="'Hide password'" [attr.aria-pressed]="hide" >
+      <mat-icon>{{hide ? 'visibility_off' : 'visibility'}}</mat-icon>
+    </button>
+  </mat-form-field>
+  <p>Password field status: {{ loginForm.get('password')?.status }}</p>
+
+  <a href="http://localhost:4200/pwdres-request">Forgot password?</a>
+
+  <p>Form Status: {{ loginForm.status }}</p>
+
+  <p>Complete the form to enable button.</p>
+
+  <button type="submit" [disabled]="!loginForm.valid">Log in</button>
+</form>
+
+<p>New here?</p>
+<a href="http://localhost:4200/register">Create an account</a>
+
+
+
