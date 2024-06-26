@@ -13,5 +13,4 @@ export class TagComponent {
 
   @Input() tag!: Tag;
 
-
 }

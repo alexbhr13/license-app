@@ -1,0 +1,39 @@
+.item-list{
+  max-height: calc(100vh);
+  overflow: auto;
+  display: flex;
+  flex-direction: column;
+}
+
+.app-name{
+  flex-grow: 1;
+  padding: 60px;
+}
+
+.top-bar{
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+}
+
+.search-icon{
+  padding: 60px;
+  margin-right: 20px;
+}
+
+.favorite-event-list-title{
+  margin-left: 60px;
+  margin-bottom: 30px;
+  font-size: 40px;
+}
+
+.second-bar{
+  display: flex;
+  justify-content: space-between;
+}
+
+.favorite-switcher{
+  margin-right: 100px;
+  display: flex;
+  flex-direction: row;
+}

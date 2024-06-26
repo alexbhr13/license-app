@@ -1,60 +1,131 @@
 
-<form [formGroup]="registerForm" (ngSubmit)="onSubmit()">
+<!--<form class="register-form" [formGroup]="registerForm" (ngSubmit)="onSubmit()">-->
 
-  <mat-form-field appearance="outline">
-    <mat-label>Email</mat-label>
-    <input
-      matInput
-      placeholder="Placeholder"
-      id="email"
-      type="email"
-      class="form-control"
-      formControlName="email"
-      required>
-  </mat-form-field>
-  <p>Email field status: {{ registerForm.get('email')?.status }}</p>
+<!--  <mat-form-field appearance="outline">-->
+<!--    <mat-label>Email</mat-label>-->
+<!--    <input-->
+<!--      matInput-->
+<!--      placeholder="Placeholder"-->
+<!--      id="email"-->
+<!--      type="email"-->
+<!--      class="form-control"-->
+<!--      formControlName="email"-->
+<!--      required>-->
+<!--  </mat-form-field>-->
+<!--  <p>Email field status: {{ registerForm.get('email')?.status }}</p>-->
 
-  <mat-form-field appearance="outline">
-    <mat-label>Password</mat-label>
-    <input
-      matInput
-      placeholder="Placeholder"
-      id="password"
-      [type]="hide ? 'password' : 'text'"
-      class="form-control"
-      formControlName="password"
-      required
-    />
-    <button mat-icon-button matSuffix (click)="clickEvent($event)" [attr.aria-label]="'Hide password'" [attr.aria-pressed]="hide" >
-      <mat-icon>{{hide ? 'visibility_off' : 'visibility'}}</mat-icon>
-    </button>
-  </mat-form-field>
-  <p>Password field status: {{ registerForm.get('password')?.status }}</p>
+<!--  <mat-form-field appearance="outline">-->
+<!--    <mat-label>Password</mat-label>-->
+<!--    <input-->
+<!--      matInput-->
+<!--      placeholder="Placeholder"-->
+<!--      id="password"-->
+<!--      [type]="hide ? 'password' : 'text'"-->
+<!--      class="form-control"-->
+<!--      formControlName="password"-->
+<!--      required-->
+<!--    />-->
+<!--    <button mat-icon-button matSuffix (click)="clickEvent($event)" [attr.aria-label]="'Hide password'" [attr.aria-pressed]="hide" >-->
+<!--      <mat-icon>{{hide ? 'visibility_off' : 'visibility'}}</mat-icon>-->
+<!--    </button>-->
+<!--  </mat-form-field>-->
+<!--  <p>Password field status: {{ registerForm.get('password')?.status }}</p>-->
 
-  <mat-form-field appearance="outline">
-    <mat-label>Confirm password</mat-label>
-    <input
-      matInput
-      placeholder="Placeholder"
-      id="confirmPassword"
-      type="password"
-      class="form-control"
-      formControlName="confirmPassword"
-      required
-    />
-  </mat-form-field>
-  <p>Confirm password field status: {{ registerForm.get('confirmPassword')?.status }}</p>
+<!--  <mat-form-field appearance="outline">-->
+<!--    <mat-label>Confirm password</mat-label>-->
+<!--    <input-->
+<!--      matInput-->
+<!--      placeholder="Placeholder"-->
+<!--      id="confirmPassword"-->
+<!--      type="password"-->
+<!--      class="form-control"-->
+<!--      formControlName="confirmPassword"-->
+<!--      required-->
+<!--    />-->
+<!--  </mat-form-field>-->
+<!--  <p>Confirm password field status: {{ registerForm.get('confirmPassword')?.status }}</p>-->
 
-  <label for="isAdmin">Admin account: </label>
-  <input id="isAdmin" type="checkbox" formControlName="isAdmin">
+<!--  <label for="isAdmin">Admin account: </label>-->
+<!--  <input id="isAdmin" type="checkbox" formControlName="isAdmin">-->
 
-  <p>Form Status: {{ registerForm.status }}</p>
+<!--  <p>Form Status: {{ registerForm.status }}</p>-->
 
-  <p>Complete the form to enable button.</p>
+<!--  <p>Complete the form to enable button.</p>-->
 
-  <button type="submit" [disabled]="!registerForm.valid">Submit</button>
-</form>
+<!--  <button type="submit" [disabled]="!registerForm.valid">Submit</button>-->
+<!--</form>-->
 
 
+<div class="login-page">
+  <div class="welcome-image">
+    <img src="assets/icons/Welcome-amico%20(1)%201.png">
+  </div>
+  <div class="student-scene-icon">
+    <img src="assets/icons/studentSceneIcon.png">
+  </div>
+  <form [formGroup]="registerForm" (ngSubmit)="onSubmit()">
+    <div class="login-form">
+        <mat-form-field class="form-field" appearance="outline">
+          <mat-label>Email</mat-label>
+          <input
+            matInput
+            placeholder="Placeholder"
+            id="email"
+            type="email"
+            class="form-control"
+            formControlName="email"
+            required>
+        </mat-form-field>
+        <p>Email field status: {{ registerForm.get('email')?.status }}</p>
+
+        <mat-form-field class="form-field" appearance="outline">
+          <mat-label>Password</mat-label>
+          <input
+            matInput
+            placeholder="Placeholder"
+            id="password"
+            [type]="hide ? 'password' : 'text'"
+            class="form-control"
+            formControlName="password"
+            required
+          />
+          <button mat-icon-button matSuffix (click)="clickEvent($event)" [attr.aria-label]="'Hide password'" [attr.aria-pressed]="hide" >
+            <mat-icon>{{hide ? 'visibility_off' : 'visibility'}}</mat-icon>
+          </button>
+        </mat-form-field>
+        <p>Password field status: {{ registerForm.get('password')?.status }}</p>
+
+        <mat-form-field class="form-field" appearance="outline">
+          <mat-label>Confirm password</mat-label>
+          <input
+            matInput
+            placeholder="Placeholder"
+            id="confirmPassword"
+            type="password"
+            class="form-control"
+            formControlName="confirmPassword"
+            required
+          />
+        </mat-form-field>
+        <p>Confirm password field status: {{ registerForm.get('confirmPassword')?.status }}</p>
+
+        <label for="isAdmin">Admin account: </label>
+        <input id="isAdmin" type="checkbox" formControlName="isAdmin">
+
+        <p>Form Status: {{ registerForm.status }}</p>
+
+        <p>Complete the form to enable button.</p>
+      <!--    <p>Password field status: {{ loginForm.get('password')?.status }}</p>-->
+    </div>
+    <div class="buttons">
+      <button class="register-button" type="submit">
+        <img src="assets/icons/createAccount1.png">
+      </button>
+      <a class="login-button" type="button" href="http://localhost:4200/login">
+        <img src="assets/icons/login1.png">
+      </a>
+    </div>
+  </form>
+</div>
 
 

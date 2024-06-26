@@ -1,1 +1,17 @@
-<p>search-item works!</p>
+<div class="background">
+  <div class="top-bar">
+    <div class="app-name">
+      <img src="assets/icons/studentSceneIcon.png"/>
+    </div>
+    <div class="search-icon">
+      <img src="assets/icons/searchIcon.png"/>
+    </div>
+  </div>
+  <div class="item-list-title">Select from the list</div>
+  <div class="item-list">
+    <div class="" *ngFor="let tag of tags">
+      <app-tag class="" [tag]="tag"></app-tag>
+    </div>
+  </div>
+  <app-footer class="footer" ></app-footer>
+</div>

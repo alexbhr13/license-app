@@ -1,1 +1,28 @@
-<p>favorite-items works!</p>
+<div class="background">
+  <div class="top-bar">
+    <div class="app-name">
+      <img src="assets/icons/studentSceneIcon.png"/>
+    </div>
+    <div class="search-icon">
+      <img src="assets/icons/searchIcon.png"/>
+    </div>
+  </div>
+  <div class="second-bar">
+    <div class="favorite-event-list-title">Favorite Items</div>
+    <div class="favorite-switcher">
+      <div routerLink="/favorite-events" routerLinkActive="active">
+        <img src="assets/icons/favoriteEventsUnfocused.png">
+      </div>
+      <div routerLink="/favorite-items" routerLinkActive="active">
+        <img src="assets/icons/favoriteItemsFocused.png"/>
+      </div>
+    </div>
+  </div>
+  <div class="event-list">
+
+    <div class="" *ngFor="let itemCard of favoriteItems">
+      <app-item-card class="" [item]="itemCard"></app-item-card>
+    </div>
+  </div>
+  <app-footer class="footer" ></app-footer>
+</div>

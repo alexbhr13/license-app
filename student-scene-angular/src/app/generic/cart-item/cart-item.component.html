@@ -1,3 +1,15 @@
-<div>
-
+<div class="cart-item">
+  <img class="item-image item-element" src="{{item.photo}}">
+  <div class="item-name item-element">{{item.name}}</div>
+  <div class="item-price item-element">Price: {{item.price}} RON</div>
+  <div class="item-size item-element">Size: {{item.itemSize}}</div>
+  <select class="item-qty item-element">
+    <option value="1">1</option>
+    <option value="2">2</option>
+    <option value="3">3</option>
+    <option value="4">4</option>
+  </select>
+  <div class="trash item-element" (click)="removeFromCart(item.id)">
+    <img src="assets/icons/trash.png">
+  </div>
 </div>

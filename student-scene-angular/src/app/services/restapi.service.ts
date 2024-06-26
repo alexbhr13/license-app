@@ -16,7 +16,7 @@ export class RestapiService {
 
   register(body: any): Observable<HttpResponse<any>> {
     const headers = new HttpHeaders({ 'Content-Type': 'application/json' });
-    return this.http.post<any>("${apiURL}/auth/registration", body, { headers, observe: 'response'});
+    return this.http.post<any>("http://localhost:8080/api/v1/auth/registration", body, { headers, observe: 'response'});
   }
 
   pwdResRequest(email: string): Observable<HttpResponse<any>> {
@@ -72,7 +72,7 @@ export class RestapiService {
     return this.http.get<ItemCard[]>("http://localhost:8080/api/v1/items", { params });
   }
 
-  getFavoriteEvents(token:string): Observable<EventCard[]>{
+  getFavoriteEvents(): Observable<EventCard[]>{
     return this.http.get<EventCard[]>("http://localhost:8080/api/v1/favorites/events");
   }
 
@@ -94,8 +94,10 @@ export class RestapiService {
     return this.http.get<Tag[]>("http://localhost:8080/api/v1/tags");
   }
 
-  getSpecificTags():Observable<Tag[]> {
-    return this.http.get<Tag[]>("http://localhost:8080/api/v1/tags/get");
+  getSpecificTags(tagType: string):Observable<Tag[]> {
+    let params = new HttpParams();
+    params = params.set("tagType", tagType);
+    return this.http.get<Tag[]>("http://localhost:8080/api/v1/tags/get", {params:params});
   }
 
   getEventByID():Observable<EventCard> {
@@ -115,11 +117,11 @@ export class RestapiService {
   removeFromCart(id: number):Observable<any> {
     let params = new HttpParams();
     params = params.set("itemId",id);
-    return this.http.delete<any>("http://localhost:8080/api/v1/cart/add", {params, observe: 'response'});
+    return this.http.delete<any>("http://localhost:8080/api/v1/cart/remove", {params, observe: 'response'});
   }
 
-  getCart():Observable<ItemCard> {
-    return this.http.get<ItemCard>("http://localhost:8080/api/v1/cart/get");
+  getCart():Observable<ItemCard[]> {
+    return this.http.get<ItemCard[]>("http://localhost:8080/api/v1/cart/get");
   }
 
   emptyCart():Observable<any> {
@@ -133,6 +135,12 @@ export class RestapiService {
   setUserProfile(body: UserProfile){
     return this.http.post<any>("http://localhost:8080/api/v1/profile/setProfile", body);
   }
+
+  validateToken():Observable<Boolean> {
+    return this.http.get<Boolean>("http://localhost:8080/api/v1/auth/validate");
+  }
+
+
 
 
 }

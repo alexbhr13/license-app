@@ -1,47 +1,50 @@
+<div class="login-page">
+  <div class="welcome-image">
+    <img src="assets/icons/Welcome-amico%20(1)%201.png">
+  </div>
+  <div class="student-scene-icon">
+    <img src="assets/icons/studentSceneIcon.png">
+  </div>
+  <form [formGroup]="loginForm" (ngSubmit)="onSubmit()">
+    <div class="login-form">
+      <mat-form-field class="form-field" appearance="outline">
+        <mat-label>Email</mat-label>
+        <input
+          matInput
+          placeholder="type your email..."
+          id="email"
+          type="email"
+          class="form-control"
+          formControlName="email"
+          required>
+      </mat-form-field>
+      <!--    <p>Email field status: {{ loginForm.get('email')?.status }}</p>-->
 
-<form [formGroup]="loginForm" (ngSubmit)="onSubmit()">
-
-  <mat-form-field appearance="outline">
-    <mat-label>Email</mat-label>
-    <input
-      matInput
-      placeholder="Placeholder"
-      id="email"
-      type="email"
-      class="form-control"
-      formControlName="email"
-      required>
-  </mat-form-field>
-  <p>Email field status: {{ loginForm.get('email')?.status }}</p>
-
-  <mat-form-field appearance="outline">
-    <mat-label>Password</mat-label>
-    <input
-      matInput
-      placeholder="Placeholder"
-      id="password"
-      [type]="hide ? 'password' : 'text'"
-      class="form-control"
-      formControlName="password"
-      required
-    />
-    <button mat-icon-button matSuffix (click)="clickEvent($event)" [attr.aria-label]="'Hide password'" [attr.aria-pressed]="hide" >
-      <mat-icon>{{hide ? 'visibility_off' : 'visibility'}}</mat-icon>
-    </button>
-  </mat-form-field>
-  <p>Password field status: {{ loginForm.get('password')?.status }}</p>
-
-  <a href="http://localhost:4200/pwdres-request">Forgot password?</a>
-
-  <p>Form Status: {{ loginForm.status }}</p>
-
-  <p>Complete the form to enable button.</p>
-
-  <button type="submit" [disabled]="!loginForm.valid">Log in</button>
-</form>
-
-<p>New here?</p>
-<a href="http://localhost:4200/register">Create an account</a>
-
-
-
+      <mat-form-field class="form-field" appearance="outline">
+        <mat-label>Password</mat-label>
+        <input
+          matInput
+          placeholder="type your password..."
+          id="password"
+          [type]="hide ? 'password' : 'text'"
+          class="form-control"
+          formControlName="password"
+          required
+        />
+        <button mat-icon-button matSuffix (click)="clickEvent($event)" [attr.aria-label]="'Hide password'" [attr.aria-pressed]="hide" >
+          <mat-icon>{{hide ? 'visibility_off' : 'visibility'}}</mat-icon>
+        </button>
+      </mat-form-field>
+        <a href="http://localhost:4200/pwdres-request">Forgot password?</a>
+      <!--    <p>Password field status: {{ loginForm.get('password')?.status }}</p>-->
+    </div>
+    <div class="buttons">
+      <button class="login-button" type="submit">
+        <img src="assets/icons/login.png">
+      </button>
+      <a class="register-button" type="button" href="http://localhost:4200/register">
+        <img src="assets/icons/createAccount.png">
+      </a>
+    </div>
+  </form>
+</div>
